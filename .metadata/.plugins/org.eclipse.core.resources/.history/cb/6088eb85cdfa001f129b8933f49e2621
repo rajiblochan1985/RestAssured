@@ -1,0 +1,30 @@
+package RestAssuredExamples;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured.*;
+import io.restassured.matcher.RestAssuredMatchers.*;
+import org.hamcrest.Matchers.*;
+
+/*
+ given()
+   - content type, set cookies, add auth, add param, set header info etc...
+   
+ when ()
+   - get, post, put, delete  
+ 
+ then ()
+  - Validate status code, extract response, extract headers cookies & response body ....
+  
+ */
+public class HTTPGet_Request {
+	
+	@Test
+	void getUser() {
+		
+		given()
+		
+		
+	}
+
+}
