@@ -1,0 +1,25 @@
+package RestAssuredExamples;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class HTTPGet_SingleEmployee {
+	
+	@Test
+	public void GetSingleEmployee()
+	{
+		//API - https://dummy.restapiexample.com/api/v1/employee/1
+		RestAssured.baseURI = "https://dummy.restapiexample.com/api/v1/employee/2";
+		RequestSpecification httpReq = RestAssured.given();
+		Response response= httpReq.request(Method.GET);
+		
+		String responsebody=response.getBody().asString();
+		System.out.println("Response Body is+ " + responsebody);
+		
+	}
+
+}
