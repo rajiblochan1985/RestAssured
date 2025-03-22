@@ -1,0 +1,13 @@
+package RestAssuredExamples;
+
+import org.testng.annotations.Test;
+
+public class HTTPGet_AllEmployees {
+	
+	@Test
+	public void GetAllEmployees()
+	{
+		
+	}
+
+}

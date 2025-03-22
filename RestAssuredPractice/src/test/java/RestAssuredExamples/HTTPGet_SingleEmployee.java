@@ -15,13 +15,14 @@ import io.restassured.specification.RequestSpecification;
 public class HTTPGet_SingleEmployee {
 	
 	@Test
-	public void GetSingleEmployee()
+	public void GetSingleEmployee() throws InterruptedException
 	{
 		//API - https://dummy.restapiexample.com/api/v1/employee/1
 		RestAssured.baseURI = "https://dummy.restapiexample.com/api/v1/employee/1";
 		RequestSpecification httpReq = RestAssured.given();
 		Response response= httpReq.request(Method.GET);
 		
+		Thread.sleep(5000);
 		String responsebody=response.getBody().asString();
 		System.out.println("Response Body is+ " + responsebody);
 		
@@ -38,8 +39,8 @@ public class HTTPGet_SingleEmployee {
 		System.out.println("Employee Salary: "+ jpath.get("data.employee_salary"));
 		
 		//or For JSON Array, we have to get the data in a List
-		//List<String> alldata = (List<String>) jpath.get("data");
-		//for(String data:alldata)
+		//List<Object> alldata = jpath.get("data");
+		//for(Object data:alldata)
 		//{
 			//System.out.println(data +" ");
 		//}
