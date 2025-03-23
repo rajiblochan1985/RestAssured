@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="RestAssuredExamples.HTTPGet_SingleEmployee">
+      <class name="RestAssuredExamples.HTTPDelete_DeleteEmployee">
         <methods>
-          <include name="GetSingleEmployee"/>
+          <include name="DeleteEmployee"/>
         </methods>
-      </class> <!-- RestAssuredExamples.HTTPGet_SingleEmployee -->
+      </class> <!-- RestAssuredExamples.HTTPDelete_DeleteEmployee -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

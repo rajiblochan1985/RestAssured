@@ -1,0 +1,46 @@
+package RestAssuredExamples;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class HTTPDelete_DeleteEmployee {
+	
+	RequestSpecification httpReq;
+	Response response;
+	
+	@Test
+	void DeleteEmployee() throws InterruptedException {
+		
+		RestAssured.baseURI = "https://dummy.restapiexample.com/api/v1/";
+		httpReq = RestAssured.given();
+		response= httpReq.request(Method.GET, "/employee/1");
+		
+		Thread.sleep(5000);
+		String responsebody=response.getBody().asPrettyString();
+		System.out.println("Response Body is+ " + responsebody);
+		
+		int statuscode = response.getStatusCode();
+		System.out.println("Status Code is: "+ statuscode);
+		Assert.assertEquals(statuscode, 200);
+		
+		JsonPath jpath = response.jsonPath();
+		int EmpID = jpath.get("data.id");
+		System.out.println("Fetched Employee ID: "+EmpID);
+		
+		//Delete Request
+		//https://dummy.restapiexample.com/api/v1/delete/2
+		response = httpReq.request(Method.DELETE,"/delete/" +EmpID);
+		
+		
+	}
+
+}

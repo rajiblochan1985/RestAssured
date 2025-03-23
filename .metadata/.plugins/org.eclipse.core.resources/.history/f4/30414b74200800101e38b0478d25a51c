@@ -1,0 +1,30 @@
+package RestAssuredExamples;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class HTTPDelete_DeleteEmployee {
+	
+	@Test
+	void DeleteEmployee() throws InterruptedException {
+		
+		RestAssured.baseURI = "https://dummy.restapiexample.com/api/v1/employee/719";
+		RequestSpecification httpReq = RestAssured.given();
+		Response response= httpReq.request(Method.GET);
+		
+		Thread.sleep(5000);
+		String responsebody=response.getBody().asPrettyString();
+		System.out.println("Response Body is+ " + responsebody);
+		
+	}
+
+}

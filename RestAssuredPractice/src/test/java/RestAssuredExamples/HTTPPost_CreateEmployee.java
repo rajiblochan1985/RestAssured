@@ -26,7 +26,7 @@ public class HTTPPost_CreateEmployee {
 		//{"name":"test","salary":"123","age":"23"}
 		Map<Object, Object> empdata=new HashMap<Object, Object>();
 		
-		empdata.put("name", "Rajib");
+		empdata.put("name", "Rajib Panigrahi");
 		empdata.put("salary", "230000");
 		empdata.put("age", "36");
 		
@@ -34,11 +34,20 @@ public class HTTPPost_CreateEmployee {
 		httpReq.body(empdata);
 		
 		Response response = httpReq.request(Method.POST,"/create");
-		String respBody = response.getBody().toString();
+		String respBody = response.getBody().asPrettyString();
 		System.out.println("Response Body is: " +respBody);
 		
 		int statuscode = response.getStatusCode();
 		System.out.println("Post Request Status Code is: "+statuscode);
+		Assert.assertEquals(statuscode, 200);
+		
+		JsonPath jpath = response.jsonPath();
+		String EmpName= jpath.get("data.name");
+		System.out.println("Employee Name is: " +EmpName);
+		
+		String ActEmpName = (String) empdata.get("name");
+		System.out.println("Actual Employee Name: "+ActEmpName);
+		Assert.assertEquals(EmpName, ActEmpName);
 		
 	}
 

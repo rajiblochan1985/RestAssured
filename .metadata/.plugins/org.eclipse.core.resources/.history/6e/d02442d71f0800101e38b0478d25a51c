@@ -1,0 +1,5 @@
+package RestAssuredExamples;
+
+public class HTTPDelete_DeleteEmployee {
+
+}

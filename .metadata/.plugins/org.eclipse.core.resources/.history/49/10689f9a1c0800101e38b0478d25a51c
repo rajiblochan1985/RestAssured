@@ -1,0 +1,30 @@
+package RestAssuredExamples;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class HTTPPut_UpdateEmployee {
+	
+	@Test
+	public void UpdateEmployee() {
+		
+		//https://dummy.restapiexample.com/api/v1/update/21
+		RestAssured.baseURI ="https://dummy.restapiexample.com/api/v1/update/21";
+		RequestSpecification httpReq = RestAssured.given();
+		
+		
+		
+	}
+
+}

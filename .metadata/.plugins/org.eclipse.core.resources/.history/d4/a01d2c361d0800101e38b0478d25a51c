@@ -1,0 +1,54 @@
+package RestAssuredExamples;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class HTTPPut_UpdateEmployee {
+	
+	@Test
+	public void UpdateEmployee() {
+		
+		//https://dummy.restapiexample.com/api/v1/update/21
+		RestAssured.baseURI ="https://dummy.restapiexample.com/api/v1/";
+		RequestSpecification httpReq = RestAssured.given();
+		
+		//{"name":"test","salary":"123","age":"23"}
+				Map<Object, Object> empdata=new HashMap<Object, Object>();
+				
+				empdata.put("name", "Anishk Panigrahi");
+				empdata.put("salary", "230000");
+				empdata.put("age", "6");
+				
+				httpReq.header("Content-Type", "application/json");
+				httpReq.body(empdata);
+				
+				Response response = httpReq.request(Method.PUT,"update/21");
+				String respBody = response.getBody().asPrettyString();
+				System.out.println("Response Body is: " +respBody);
+				
+				int statuscode = response.getStatusCode();
+				System.out.println("Post Request Status Code is: "+statuscode);
+				Assert.assertEquals(statuscode, 200);
+				
+				JsonPath jpath = response.jsonPath();
+				String EmpName= jpath.get("data.name");
+				System.out.println("Employee Name is: " +EmpName);
+				
+				String ActEmpName = (String) empdata.get("name");
+				System.out.println("Actual Employee Name: "+ActEmpName);
+				Assert.assertEquals(EmpName, ActEmpName);
+		
+	}
+
+}

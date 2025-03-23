@@ -1,0 +1,45 @@
+package RestAssuredExamples;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class HTTPPost_CreateEmployee {
+	
+	@Test
+	public void CreateEmployee()
+	{
+		//https://dummy.restapiexample.com/api/v1/create
+		RestAssured.baseURI = "https://dummy.restapiexample.com/api/v1/";
+		RequestSpecification httpReq= RestAssured.given();
+		
+		//{"name":"test","salary":"123","age":"23"}
+		Map<Object, Object> empdata=new HashMap<Object, Object>();
+		
+		empdata.put("name", "Rajib");
+		empdata.put("salary", "230000");
+		empdata.put("age", "36");
+		
+		httpReq.header("Content-Type", "application/json");
+		httpReq.body(empdata);
+		
+		Response response = httpReq.request(Method.POST,"/create");
+		String respBody = response.getBody().asPrettyString();
+		System.out.println("Response Body is: " +respBody);
+		
+		int statuscode = response.getStatusCode();
+		System.out.println("Post Request Status Code is: "+statuscode);
+		
+	}
+
+}
