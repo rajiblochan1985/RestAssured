@@ -1,0 +1,5 @@
+package RestAssuredExamples;
+
+public class HTTPPost_Request_UsingJSON_File {
+
+}

@@ -1,0 +1,44 @@
+package RestAssuredExamples;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class HTTPPost_Request_UsingJSON_File {
+	
+	@Test
+	public void PostRequest_UsingJSONFile() throws IOException
+	{
+		RestAssured.baseURI="https://jsonplaceholder.typicode.com";
+		String jsonBody = new String(Files.readAllBytes(Paths.get("src/test/resources/PostData.json"")));
+		
+		Response response = given()
+							.header("Content-Type","Application/Json")
+							.body(jsonBody)
+							.when()
+							.post("/posts")
+							.then()
+							.statusCode(201)
+						    .extract().response();
+		
+		String ResponseBody =response.getBody().asString();
+		System.out.println("Response Body: "+ResponseBody);
+		
+		// You can also use assertions to verify the response content
+        response.then().body("title", equalTo("My Dream Story"));
+        response.then().body("body", equalTo("Versatile"));
+	}
+
+}

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="RestAssuredExamples.HTTPDelete_DeleteEmployee">
+      <class name="RestAssuredExamples.HTTPPost_Request_UsingJSON_File">
         <methods>
-          <include name="DeleteEmployee"/>
+          <include name="PostRequest_UsingJSONFile"/>
         </methods>
-      </class> <!-- RestAssuredExamples.HTTPDelete_DeleteEmployee -->
+      </class> <!-- RestAssuredExamples.HTTPPost_Request_UsingJSON_File -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
