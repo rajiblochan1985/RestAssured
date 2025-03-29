@@ -1,0 +1,24 @@
+package CoreJavaPractice;
+
+public class ReverseNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//Using while loop
+		int num =234673;
+		int reverse =0;
+		System.out.println("Given Number is: " + num);
+		while(num !=0) {
+			int digit = num%10;
+			reverse = reverse*10 +digit;
+			num/=10;
+		}
+		
+		System.out.println("Reverse Number si: " +reverse);
+		
+		System.out.println("--------------------------------------------");
+		//Using for loop
+		
+	}
+
+}
