@@ -1,0 +1,38 @@
+package CoreJavaPractice;
+
+import java.util.Arrays;
+
+public class FindDuplicateElementsOfanArray {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// Using Integer Array
+		int[] arr = { 3, 4, 2, 8, 3, 9, 4, 10, 6, 7 };
+		System.out.println("Given Array is: " + Arrays.toString(arr));
+		System.out.println("Duplicate Elements in the given Array: ");
+		for (int i=0; i < arr.length; i++) {
+			for (int j =i+1; j <arr.length; j++)
+			{
+				if (arr[i] == arr[j]) {
+					System.out.println(arr[j]);
+				}
+			}
+		}
+		System.out.println("-----------------------------------------------------------------");
+		
+		//Using String Array:
+		String[] names = { "Java", "JavaScript", "Python", "C", "Groovy", "Java", "Groovy" };
+		System.out.println("Given Array is: " + Arrays.toString(names));
+		System.out.println("Duplicate Elements in the given Array: ");
+		for (int i =0; i < names.length; i++) {
+			for (int j=i+1; j< names.length; j++) {
+				if(names[i].equals(names[j])) {
+					System.out.println(names[j]);
+				}
+			}
+		}
+		
+		
+	}
+
+}

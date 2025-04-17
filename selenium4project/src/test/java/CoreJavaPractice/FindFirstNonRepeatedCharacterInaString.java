@@ -1,0 +1,19 @@
+package CoreJavaPractice;
+
+public class FindFirstNonRepeatedCharacterInaString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "Automation";
+		str = str.toLowerCase();
+		for (char i : str.toCharArray())
+		{
+			if(str.indexOf(i) == str.lastIndexOf(i))
+			{
+				System.out.println("First Non repeated character is: " + i);
+				break;
+			}
+		}
+	}
+
+}
